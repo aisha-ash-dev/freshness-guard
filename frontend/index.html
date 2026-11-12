@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freshness Guard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Freshness Guard</h1>
+    <p>AI answers sound sure even when the facts have changed. This checks each claim against the live web and tells you which ones went stale.</p>
+    <div id="health" class="banner" hidden></div>
+  </header>
+  <main>
+    <section class="panel">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="ask">Ask a model</button>
+        <button role="tab" aria-selected="false" data-tab="paste">Check pasted text</button>
+      </div>
+      <label class="sr" for="text">Input</label>
+      <textarea id="text" rows="7"></textarea>
+      <div class="samples" id="samples"></div>
+      <div class="row">
+        <label>When something is stale
+          <select id="mode"><option value="annotate">Only flag it</option><option value="rewrite">Flag it and fix the answer</option></select>
+        </label>
+        <button id="go" class="primary">Check answer</button>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+      <p id="stats" class="stats"></p>
+    </section>
+    <section id="result" hidden aria-live="polite">
+      <div class="top">
+        <div id="stamp" class="stamp"><span id="score"></span><small>out of 100</small></div>
+        <div><h2 id="verdict"></h2><p id="meta" class="muted"></p></div>
+      </div>
+      <h3>Answer that was checked</h3>
+      <blockquote id="answer"></blockquote>
+      <div id="fixed-wrap" hidden><h3>Corrected answer</h3><blockquote id="fixed" class="fixed"></blockquote></div>
+      <h3>Claim by claim</h3>
+      <ul id="claims"></ul>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
