@@ -37,7 +37,7 @@ endpoint: apps change one URL, nothing else.
 ## Use it as a drop-in gateway
 ```
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-  "model": "openai/gpt-4o-mini",
+  "model": "groq/llama-3.3-70b-versatile",
   "messages": [{"role":"user","content":"Who is the current UK prime minister?"}],
   "freshness": {"mode": "rewrite"}
 }'
